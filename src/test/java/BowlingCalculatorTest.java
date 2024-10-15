@@ -1,5 +1,6 @@
 import org.example.BowlingCalculator;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BowlingCalculatorTest {
@@ -18,15 +19,42 @@ public class BowlingCalculatorTest {
         calc.roll(3);
         assertEquals(8, calc.score());
     }
+
     @Test
     public void spareRoll() {
         calc.roll(3);
         calc.roll(7);
+        calc.roll(1);
+        assertEquals(20, calc.score());
+    }
+
+    @Test
+    public void strikeRoll() {
+        calc.roll(10);
+        calc.roll(7);
+        calc.roll(1);
+        assertEquals(26, calc.score());
+    }
+    
+    @Test
+    public void score() {
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(10);
+        calc.roll(1);
+        calc.roll(1);
         calc.roll(5);
-        assertEquals(15, calc.spare());
+        calc.roll(5);
+        calc.roll(1);
+        calc.roll(1);
+        assertEquals(31, calc.score());
+    }
+        
+        
+        
     }
 
 
 
-
-}
