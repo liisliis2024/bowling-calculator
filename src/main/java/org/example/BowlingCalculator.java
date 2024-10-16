@@ -9,16 +9,17 @@ public class BowlingCalculator {
 
 
     public BowlingCalculator() {
+        // TODO: do not add preliminary frames
         for (int i = 0; i < 12; i++) {
             frames.add(new Frame());
         }
     }
 
     public void roll(int pins) {
-        Frame current = frames.get(currentFrame);
+        var current = frames.get(currentFrame);
         current.addRoll(pins);
 
-        if (pins == 10 && currentFrame < 9) {
+        if (current.isStrike() && currentFrame < 9) {
             currentFrame++;
 
         } else if (current.isComplete()) {
@@ -42,7 +43,7 @@ public class BowlingCalculator {
     }
 
     private int getStrikeBonus(int frameIndex) {
-        Frame nextFrame = frames.get(frameIndex + 1);
+        var nextFrame = frames.get(frameIndex + 1);
         int bonus = nextFrame.getRoll(0) + nextFrame.getRoll(1);
 
         if (nextFrame.isStrike()) {
@@ -52,10 +53,9 @@ public class BowlingCalculator {
     }
 
     private int getSpareBonus(int frameIndex) {
-        Frame nextFrame = frames.get(frameIndex + 1);
+        var nextFrame = frames.get(frameIndex + 1);
         return nextFrame.getRoll(0);
     }
-
 
 }
 

@@ -56,10 +56,9 @@ public class BowlingCalculatorTest {
     @Test
     public void maxScore() {
         for (int i = 0; i < 12; i++) {
-           calc.roll(10);
+            calc.roll(10);
         }
         assertEquals(300, calc.score());
-
     }
 
     @Test
@@ -77,6 +76,56 @@ public class BowlingCalculatorTest {
         calc.roll(1);
         assertEquals(20, calc.score());
     }
+
+    @Test
+    public void lastRollStrike() {
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(10);
+        calc.roll(1);
+        calc.roll(1);
+        assertEquals(22, calc.score());
+    }
+
+    @Test
+    public void lastRoundWithoutBonus() {
+        calc.roll(10);
+        calc.roll(10);
+        calc.roll(10);
+        calc.roll(10);
+        calc.roll(10);
+        calc.roll(10);
+        calc.roll(10);
+        calc.roll(10);
+        calc.roll(10);
+        calc.roll(10);
+        assertEquals(270, calc.score());
+    }
+
+    @Test
+    public void secondRollStrike() {
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(1);
+        calc.roll(0);
+        calc.roll(10);
+        calc.roll(1);
+        calc.roll(1);
+        assertEquals(21, calc.score());
+    }
+
+
 }
 
 
