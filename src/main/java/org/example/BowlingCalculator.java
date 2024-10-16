@@ -9,7 +9,7 @@ public class BowlingCalculator {
 
 
     public BowlingCalculator() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 12; i++) {
             frames.add(new Frame());
         }
     }
@@ -28,7 +28,7 @@ public class BowlingCalculator {
 
     public int score() {
         int totalScore = 0;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i <= 9; i++) {
             Frame frame = frames.get(i);
             totalScore += frame.getScore();
 
@@ -43,11 +43,10 @@ public class BowlingCalculator {
 
     private int getStrikeBonus(int frameIndex) {
         Frame nextFrame = frames.get(frameIndex + 1);
-        int bonus = nextFrame.getRoll(0);
-        if (nextFrame.isStrike() && frameIndex < 8) {
+        int bonus = nextFrame.getRoll(0) + nextFrame.getRoll(1);
+
+        if (nextFrame.isStrike()) {
             bonus += frames.get(frameIndex + 2).getRoll(0);
-        } else if (frameIndex < 9) {
-            bonus += nextFrame.getRoll(1);
         }
         return bonus;
     }
