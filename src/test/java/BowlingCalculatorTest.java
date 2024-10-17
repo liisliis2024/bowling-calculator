@@ -32,6 +32,7 @@ public class BowlingCalculatorTest {
         assertEquals(expected, calc.frames);
     }
 
+//    todo: -1 peab tegelema
     @Test
     public void oneRoll() {
         calc.addRoll(6);
@@ -46,205 +47,213 @@ public class BowlingCalculatorTest {
         calc.addRoll(3);
         assertEquals(11, calc.score());
     }
-//
-//    @Test
-//    public void spareRoll() {
-//        calc.roll(3);
-//        calc.roll(7);
-//        calc.roll(1);
-//        assertEquals(12, calc.score());
-//    }
-//
-//    @Test
-//    public void spareRollWithTen() {
-//        calc.roll(0);
-//        calc.roll(10);
-//        calc.roll(1);
-//        assertEquals(12, calc.score());
-//    }
-//
-//    @Test
-//    public void strikeRoll() {
-//        calc.roll(10);
-//        calc.roll(7);
-//        calc.roll(1);
-//        assertEquals(26, calc.score());
-//    }
-//
-//    @Test
-//    public void score() {
-//        calc.roll(1);
-//        calc.roll(1);
-//
-//        calc.roll(1);
-//        calc.roll(1);
-//
-//        calc.roll(10);
-//
-//        calc.roll(10);
-//
-//        calc.roll(4);
-//        calc.roll(3);
-//
-//        calc.roll(5);
-//        calc.roll(1);
-//
-//        calc.roll(1);
-//        calc.roll(1);
-//
-//        calc.roll(1);
-//        calc.roll(1);
-//
-//        calc.roll(1);
-//        calc.roll(1);
-//
-//        calc.roll(1);
-//        calc.roll(1);
-//        assertEquals(66, calc.score());
-//    }
-//
-//    @Test
-//    public void maxScore() {
-//        for (int i = 0; i <= 11; i++) {
-//            calc.roll(10);
-//        }
-//        assertEquals(300, calc.score());
-//    }
-//
-//    @Test
-//    public void endWithoutBonus() {
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(10);
-//
-//        calc.roll(10);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//        assertEquals(96, calc.score());
-//    }
-//
-//    @Test
-//    public void endWithSpare() {
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(10);
-//
-//        calc.roll(10);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(7);
-//
-//        calc.roll(7);
-//        assertEquals(106, calc.score());
-//    }
-//
-//    @Test
-//    public void endWithOneStrike() {
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(10);
-//
-//        calc.roll(10);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(10);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//        assertEquals(106, calc.score());
-//    }
-//
-//    @Test
-//    public void endWithTwoStrikes() {
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(10);
-//
-//        calc.roll(10);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(3);
-//        calc.roll(4);
-//
-//        calc.roll(10);
-//
-//        calc.roll(10);
-//
-//        calc.roll(4);
-//        assertEquals(113, calc.score());
-//    }
+
+    @Test
+    public void spareRoll() {
+        calc.addRoll(3);
+        calc.addRoll(7);
+        calc.addRoll(1);
+        assertEquals(12, calc.score());
+    }
+
+    @Test
+    public void spareRollWithTen() {
+        calc.addRoll(0);
+        calc.addRoll(10);
+        calc.addRoll(1);
+        assertEquals(12, calc.score());
+    }
+
+    @Test
+    public void strikeRoll() {
+        calc.addRoll(10);
+        calc.addRoll(7);
+        calc.addRoll(1);
+        assertEquals(26, calc.score());
+    }
+    @Test
+    public void strikeRollTimesTwo() {
+        calc.addRoll(10);
+        calc.addRoll(10);
+        calc.addRoll(1);
+        calc.addRoll(1);
+        assertEquals(35, calc.score());
+    }
+
+    @Test
+    public void score() {
+        calc.addRoll(1);
+        calc.addRoll(1);
+
+        calc.addRoll(1);
+        calc.addRoll(1);
+
+        calc.addRoll(10);
+
+        calc.addRoll(10);
+
+        calc.addRoll(4);
+        calc.addRoll(3);
+
+        calc.addRoll(5);
+        calc.addRoll(1);
+
+        calc.addRoll(1);
+        calc.addRoll(1);
+
+        calc.addRoll(1);
+        calc.addRoll(1);
+
+        calc.addRoll(1);
+        calc.addRoll(1);
+
+        calc.addRoll(1);
+        calc.addRoll(1);
+        assertEquals(66, calc.score());
+    }
+
+    @Test
+    public void maxScore() {
+        for (int i = 0; i <= 11; i++) {
+            calc.addRoll(10);
+        }
+        assertEquals(300, calc.score());
+    }
+
+    @Test
+    public void endWithoutBonus() {
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(10);
+
+        calc.addRoll(10);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+        assertEquals(96, calc.score());
+    }
+
+    @Test
+    public void endWithSpare() {
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(10);
+
+        calc.addRoll(10);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(7);
+
+        calc.addRoll(7);
+        assertEquals(106, calc.score());
+    }
+
+    @Test
+    public void endWithOneStrike() {
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(10);
+
+        calc.addRoll(10);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(10);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+        assertEquals(106, calc.score());
+    }
+
+    @Test
+    public void endWithTwoStrikes() {
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(10);
+
+        calc.addRoll(10);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(3);
+        calc.addRoll(4);
+
+        calc.addRoll(10);
+
+        calc.addRoll(10);
+
+        calc.addRoll(4);
+        assertEquals(113, calc.score());
+    }
 }
 
 

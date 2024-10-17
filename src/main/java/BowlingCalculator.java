@@ -3,19 +3,17 @@ import java.util.List;
 
 public class BowlingCalculator {
     List<Frame> frames = new ArrayList<>();
-//    int frameIndex = 0;
 
     public void addRoll(int pins) {
         if (frames.isEmpty() || frames.getLast().isComplete()) {
-            Frame frame = new Frame();
-            frame.setFirstRoll(pins);
+            Frame frame = new Frame(pins);
             frames.add(frame);
             if (frame.isStrike()) {
+                frame.setSecondRoll(0);
                 frame.isComplete();
             }
         } else {
             Frame frame = frames.getLast();
-
             frame.setSecondRoll(pins);
             frame.isComplete();
         }
@@ -24,14 +22,18 @@ public class BowlingCalculator {
     public int score() {
         int score = 0;
 
-
         for (int i = 0; i < frames.size(); i++) {
             score += frames.get(i).getFrameScore();
-
+            if (frames.get(i).isSpare()) {
+                score += frames.get(i + 1).getFirstRoll();
+            }
+            if (frames.get(i).isStrike()) {
+                score += frames.get(i + 1).getFrameScore();
+                if (frames.get(i + 1).isStrike()) {
+                    score += frames.get(i + 2).getFirstRoll();
+                }
+            }
         }
-
-// regular score =
-
         return score;
     }
 }

@@ -2,14 +2,15 @@ import java.util.Objects;
 
 public class Frame {
     int firstRoll;
-    int secondRoll;
-
-    public Frame() {
-    }
+    int secondRoll = -1;
 
     public Frame(int firstRoll, int secondRoll) {
         this.firstRoll = firstRoll;
         this.secondRoll = secondRoll;
+    }
+
+    public Frame(int firstRoll) {
+        this.firstRoll = firstRoll;
     }
 
     public int getFirstRoll() {
@@ -41,6 +42,9 @@ public class Frame {
     }
 
     public int getFrameScore() {
+        if (secondRoll == -1) {
+            return firstRoll;
+        }
         return firstRoll + secondRoll;
     }
 
