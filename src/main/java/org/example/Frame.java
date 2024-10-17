@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Frame {
+    // TODO: keep roll1, roll2
     private List<Integer> rolls = new ArrayList<>();
 
     public void addRoll(int pins) {
@@ -15,7 +16,7 @@ public class Frame {
     }
 
     public boolean isStrike() {
-        return rolls.size() == 1 && rolls.get(0) == 10;
+        return rolls.size() == 1 && rolls.getFirst() == 10;
     }
 
     public boolean isSpare() {

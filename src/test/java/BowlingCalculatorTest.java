@@ -29,6 +29,14 @@ public class BowlingCalculatorTest {
     }
 
     @Test
+    public void spareRollWithTen() {
+        calc.roll(0);
+        calc.roll(10);
+        calc.roll(1);
+        assertEquals(12, calc.score());
+    }
+
+    @Test
     public void strikeRoll() {
         calc.roll(10);
         calc.roll(7);
@@ -40,92 +48,176 @@ public class BowlingCalculatorTest {
     public void score() {
         calc.roll(1);
         calc.roll(1);
+
         calc.roll(1);
         calc.roll(1);
+
         calc.roll(10);
+
         calc.roll(10);
+
         calc.roll(4);
         calc.roll(3);
+
         calc.roll(5);
         calc.roll(1);
+
         calc.roll(1);
         calc.roll(1);
-        assertEquals(60, calc.score());
+
+        calc.roll(1);
+        calc.roll(1);
+
+        calc.roll(1);
+        calc.roll(1);
+
+        calc.roll(1);
+        calc.roll(1);
+        assertEquals(66, calc.score());
     }
 
     @Test
     public void maxScore() {
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i <= 11; i++) {
             calc.roll(10);
         }
         assertEquals(300, calc.score());
     }
 
     @Test
-    public void lastRollSpare() {
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(5);
-        calc.roll(5);
-        calc.roll(1);
-        assertEquals(20, calc.score());
+    public void endWithoutBonus() {
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(10);
+
+        calc.roll(10);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+        assertEquals(96, calc.score());
     }
 
     @Test
-    public void lastRollStrike() {
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
+    public void endWithSpare() {
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
         calc.roll(10);
-        calc.roll(1);
-        calc.roll(1);
-        assertEquals(22, calc.score());
+
+        calc.roll(10);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(7);
+
+        calc.roll(7);
+        assertEquals(106, calc.score());
     }
 
     @Test
-    public void lastRoundWithoutBonus() {
+    public void endWithOneStrike() {
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
         calc.roll(10);
+
         calc.roll(10);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
         calc.roll(10);
-        calc.roll(10);
-        calc.roll(10);
-        calc.roll(10);
-        calc.roll(10);
-        calc.roll(10);
-        calc.roll(10);
-        calc.roll(10);
-        assertEquals(270, calc.score());
+
+        calc.roll(3);
+        calc.roll(4);
+        assertEquals(106, calc.score());
     }
 
     @Test
-    public void secondRollStrike() {
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(1);
-        calc.roll(0);
+    public void endWithTwoStrikes() {
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
         calc.roll(10);
-        calc.roll(1);
-        calc.roll(1);
-        assertEquals(21, calc.score());
+
+        calc.roll(10);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(3);
+        calc.roll(4);
+
+        calc.roll(10);
+
+        calc.roll(10);
+
+        calc.roll(4);
+        assertEquals(113, calc.score());
     }
-
-
 }
 
 
