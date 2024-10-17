@@ -22,19 +22,30 @@ public class BowlingCalculatorTest {
         assertEquals(expected, calc.frames);
     }
 
-//    @Test
-//    public void oneRoll() {
-//        calc.roll(6);
-//        assertEquals(6, calc.score());
-//    }
-//
-//    @Test
-//    public void multipleRolls() {
-//        calc.roll(1);
-//        calc.roll(4);
-//        calc.roll(3);
-//        assertEquals(8, calc.score());
-//    }
+    @Test
+    void multipleFrames() {
+        calc.addRoll(3);
+        calc.addRoll(4);
+        calc.addRoll(4);
+        calc.addRoll(3);
+        List<Frame> expected = List.of(new Frame(3, 4), new Frame(4, 3));
+        assertEquals(expected, calc.frames);
+    }
+
+    @Test
+    public void oneRoll() {
+        calc.addRoll(6);
+        assertEquals(6, calc.score());
+    }
+
+    @Test
+    public void multipleRolls() {
+        calc.addRoll(1);
+        calc.addRoll(4);
+        calc.addRoll(3);
+        calc.addRoll(3);
+        assertEquals(11, calc.score());
+    }
 //
 //    @Test
 //    public void spareRoll() {

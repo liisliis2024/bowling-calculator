@@ -3,26 +3,38 @@ import java.util.List;
 
 public class BowlingCalculator {
     List<Frame> frames = new ArrayList<>();
-    int frameIndex = 0;
+//    int frameIndex = 0;
 
     public void addRoll(int pins) {
-//        esimese frame peab ara tegema
-//        lisama firstRoll ja secondRoll frame
-//        lisama frame frames listi
-
-
-        if (frames.isEmpty()) {
+        if (frames.isEmpty() || frames.getLast().isComplete()) {
             Frame frame = new Frame();
             frame.setFirstRoll(pins);
             frames.add(frame);
             if (frame.isStrike()) {
-                frameIndex++;
+                frame.isComplete();
             }
         } else {
-            Frame frame = frames.get(frameIndex);
+            Frame frame = frames.getLast();
+
             frame.setSecondRoll(pins);
-            frameIndex++;
+            frame.isComplete();
         }
+    }
+
+    public int score() {
+        int score = 0;
+
+
+        for (int i = 0; i < frames.size(); i++) {
+            score += frames.get(i).getFrameScore();
+
+        }
+
+// regular score =
+
+        return score;
+    }
+}
 
 
 //    public BowlingCalculator() {
@@ -74,8 +86,8 @@ public class BowlingCalculator {
 //        return nextFrame.getRoll(0);
 //    }
 
-    }
-}
+
+
 
 
 

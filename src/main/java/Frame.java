@@ -1,7 +1,6 @@
 import java.util.Objects;
 
 public class Frame {
-    // TODO: keep roll1, roll2
     int firstRoll;
     int secondRoll;
 
@@ -11,19 +10,6 @@ public class Frame {
     public Frame(int firstRoll, int secondRoll) {
         this.firstRoll = firstRoll;
         this.secondRoll = secondRoll;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Frame frame = (Frame) o;
-        return firstRoll == frame.firstRoll && secondRoll == frame.secondRoll;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstRoll, secondRoll);
     }
 
     public int getFirstRoll() {
@@ -42,10 +28,6 @@ public class Frame {
         this.secondRoll = secondRoll;
     }
 
-//    public void addRoll(int pins) {
-//        rolls.add(pins);
-//    }
-
     public boolean isComplete() {
         return isStrike() || secondRoll >= 0;
     }
@@ -55,11 +37,25 @@ public class Frame {
     }
 
     public boolean isSpare() {
-        return getScore() == 10 && !isStrike();
+        return getFrameScore() == 10 && !isStrike();
     }
 
-    public int getScore() {
+    public int getFrameScore() {
         return firstRoll + secondRoll;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Frame frame = (Frame) o;
+        return firstRoll == frame.firstRoll && secondRoll == frame.secondRoll;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstRoll, secondRoll);
+    }
+
 
 }
