@@ -260,23 +260,37 @@ public class BowlingCalculatorTest {
     @Test
     void toStringRegular() {
         List<Frame> frames = List.of(new Frame(3, 4), new Frame(3, 4), new Frame(3, 4), new Frame(3, 4));
-        assertEquals("| 3 4 | 3 4 | 3 4 | 3 4 |", calc.getScorePrint(frames));
+        assertEquals("| 3 4 | 3 4 | 3 4 | 3 4 |", calc.toString());
     }
 
     @Test
     void toStringSpare() {
         List<Frame> frames = List.of(new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4));
-        assertEquals("| 3 4 | 3 / | 3 4 | 3 4 |", calc.getScorePrint(frames));
+        assertEquals("| 3 4 | 3 / | 3 4 | 3 4 |", calc.toString());
     }
 
     @Test
     void toStringStrike() {
         List<Frame> frames = List.of(new Frame(3, 4), new Frame(10), new Frame(3, 4), new Frame(3, 4));
-        assertEquals("| 3 4 | X - | 3 4 | 3 4 |", calc.getScorePrint(frames));
+        assertEquals("| 3 4 | X - | 3 4 | 3 4 |", calc.toString());
     }
 
+    @Test
+    void toStringTotalScore() {
+        List<Frame> frames = List.of(new Frame(3, 4), new Frame(3, 4), new Frame(3, 4), new Frame(3, 4));
+        assertEquals("""
+            | 3 4 | 3 4 | 3 4 | 3 4 |
+            | 7 | 7 | 7 | 7 |
+            """, calc.toString(frames));
 
+    }
 
+    @Test
+    void toStringOneFrame() {
+        List<Frame> frames = List.of(new Frame(3, 4));
+        assertEquals("| 3 4 |" + "\n" + "| 7 |", calc.toString());
+
+    }
 
 
 }
