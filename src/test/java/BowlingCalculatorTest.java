@@ -94,7 +94,6 @@ public class BowlingCalculatorTest {
     public void endWithSpare() {
         addRolls(3, 4, 3, 4, 10, 10, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 7, 7);
         assertEquals(106, calc.calculateTotalScore());
-//        todo: siia toString(), addRolls siia testklassi teha
     }
 
     @Test
@@ -110,37 +109,30 @@ public class BowlingCalculatorTest {
     }
 
     @Test
-    void toStringRegular() {
-        List<Frame> frames = List.of(new Frame(3, 4), new Frame(3, 4), new Frame(3, 4), new Frame(3, 4));
-        assertEquals("| 3 4 | 3 4 | 3 4 | 3 4 |", calc.toString());
-    }
-
-    @Test
-    void toStringSpare() {
-        List<Frame> frames = List.of(new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4));
-        assertEquals("| 3 4 | 3 / | 3 4 | 3 4 |", calc.toString());
-    }
-
-    @Test
-    void toStringStrike() {
-        List<Frame> frames = List.of(new Frame(3, 4), new Frame(10), new Frame(3, 4), new Frame(3, 4));
-        assertEquals("| 3 4 | X - | 3 4 | 3 4 |", calc.toString());
-    }
-
-    @Test
-    void toStringTotalScore() {
-        List<Frame> frames = List.of(new Frame(3, 4), new Frame(3, 4), new Frame(3, 4), new Frame(3, 4));
+    void toStringRegularEnd() {
+        calc.frames = List.of(new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 4), new Frame(3, 4));
         assertEquals("""
-                | 3 4 | 3 4 | 3 4 | 3 4 |
-                | 7 | 7 | 7 | 7 |
-                """, calc.toString());
+                | 3 4 | X - | 3 4 | 3 / | 3 4 | 3 4 | X - | 3 4 | 3 4 | 3 4 |
+                | 7 | 24 | 31 | 44 | 51 | 58 | 75 | 82 | 89 | 96 |""", calc.toString());
+
+    }
+
+//    todo: bonus rounds
+    @Test
+    void toStringSpareEnd() {
+        calc.frames = List.of(new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 4), new Frame(3, 7), new Frame(4));
+        assertEquals("""
+                | 3 4 | X - | 3 4 | 3 / | 3 4 | 3 4 | X - | 3 4 | 3 4 | 3 / | 4 |
+                | 7 | 24 | 31 | 44 | 51 | 58 | 75 | 82 | 89 | 103 |""", calc.toString());
 
     }
 
     @Test
-    void toStringOneFrame() {
-        List<Frame> frames = List.of(new Frame(3, 4));
-        assertEquals("| 3 4 |" + "\n" + "| 7 |", calc.toString());
+    void toStringStrikeEnd() {
+        calc.frames = List.of(new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 4), new Frame(3, 4));
+        assertEquals("""
+                | 3 4 | X - | 3 4 | 3 / | 3 4 | 3 4 | X - | 3 4 | 3 4 | X - | 3 4 |
+                | 7 | 24 | 31 | 44 | 51 | 58 | 75 | 82 | 89 | 96 |""", calc.toString());
 
     }
 

@@ -18,7 +18,6 @@ public class BowlingCalculator {
 
     public int calculateTotalScore() {
         int score = 0;
-//        todo> for each
         for (int i = 0; i < frames.size() && i <= 9; i++) {
             score = calculateFrameScore(i, score);
         }
@@ -40,16 +39,19 @@ public class BowlingCalculator {
         return score;
     }
 
-    public String toString(List<Frame> frames) {
+    public String toString() {
         var frameContents = new StringBuilder();
         var frameScores = new StringBuilder();
+        int frameScore = 0;
 
-        for (Frame frame : frames) {
-            frameContents.append("| ").append(frame.toString()).append(" |");
-            frameScores.append("  ").append(frame.getFrameScore()).append("  ");
-//            if (i == frames.size() - 1) {
-//                printScore += "|";
-//            }
+        for (int i = 0; i < frames.size(); i++) {
+            frameScore = calculateFrameScore(i, frameScore);
+            frameContents.append("| ").append(frames.get(i).toString()).append(" ");
+            frameScores.append("| ").append(frameScore).append(" ");
+            if (i == frames.size()-1) {
+                frameContents.append("|");
+                frameScores.append("|");
+            }
         }
         return frameContents + "\n" + frameScores;
     }
