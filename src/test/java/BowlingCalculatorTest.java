@@ -36,7 +36,7 @@ public class BowlingCalculatorTest {
     @Test
     public void oneRoll() {
         calc.addRoll(6);
-        assertEquals(6, calc.score());
+        assertEquals(6, calc.calculateTotalScore());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class BowlingCalculatorTest {
         calc.addRoll(4);
         calc.addRoll(3);
         calc.addRoll(3);
-        assertEquals(11, calc.score());
+        assertEquals(11, calc.calculateTotalScore());
     }
 
     @Test
@@ -53,7 +53,7 @@ public class BowlingCalculatorTest {
         calc.addRoll(3);
         calc.addRoll(7);
         calc.addRoll(1);
-        assertEquals(12, calc.score());
+        assertEquals(12, calc.calculateTotalScore());
     }
 
     @Test
@@ -61,7 +61,7 @@ public class BowlingCalculatorTest {
         calc.addRoll(0);
         calc.addRoll(10);
         calc.addRoll(1);
-        assertEquals(12, calc.score());
+        assertEquals(12, calc.calculateTotalScore());
     }
 
     @Test
@@ -69,7 +69,7 @@ public class BowlingCalculatorTest {
         calc.addRoll(10);
         calc.addRoll(7);
         calc.addRoll(1);
-        assertEquals(26, calc.score());
+        assertEquals(26, calc.calculateTotalScore());
     }
     @Test
     public void strikeRollTimesTwo() {
@@ -77,11 +77,11 @@ public class BowlingCalculatorTest {
         calc.addRoll(10);
         calc.addRoll(1);
         calc.addRoll(1);
-        assertEquals(35, calc.score());
+        assertEquals(35, calc.calculateTotalScore());
     }
 
     @Test
-    public void score() {
+    public void calculateTotalScore() {
         calc.addRoll(1);
         calc.addRoll(1);
 
@@ -109,15 +109,15 @@ public class BowlingCalculatorTest {
 
         calc.addRoll(1);
         calc.addRoll(1);
-        assertEquals(66, calc.score());
+        assertEquals(66, calc.calculateTotalScore());
     }
 
     @Test
-    public void maxScore() {
+    public void maxCalculateTotalScore() {
         for (int i = 0; i <= 11; i++) {
             calc.addRoll(10);
         }
-        assertEquals(300, calc.score());
+        assertEquals(300, calc.calculateTotalScore());
     }
 
     @Test
@@ -149,7 +149,7 @@ public class BowlingCalculatorTest {
 
         calc.addRoll(3);
         calc.addRoll(4);
-        assertEquals(96, calc.score());
+        assertEquals(96, calc.calculateTotalScore());
     }
 
     @Test
@@ -183,7 +183,7 @@ public class BowlingCalculatorTest {
         calc.addRoll(7);
 
         calc.addRoll(7);
-        assertEquals(106, calc.score());
+        assertEquals(106, calc.calculateTotalScore());
     }
 
     @Test
@@ -217,7 +217,7 @@ public class BowlingCalculatorTest {
 
         calc.addRoll(3);
         calc.addRoll(4);
-        assertEquals(106, calc.score());
+        assertEquals(106, calc.calculateTotalScore());
     }
 
     @Test
@@ -252,7 +252,8 @@ public class BowlingCalculatorTest {
         calc.addRoll(10);
 
         calc.addRoll(4);
-        assertEquals(113, calc.score());
+//        viimane on -1
+        assertEquals(113, calc.calculateTotalScore());
     }
 }
 

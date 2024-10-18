@@ -39,4 +39,18 @@ class FrameTest {
         assertEquals(6, new Frame(3, 3).getFrameScore());
     }
 
+    @Test
+    void toStringRegular() {
+        assertEquals("3 4", new Frame(3, 4).toString());
+    }
+    
+    @Test
+    void toStringSpare() {
+        assertEquals("3 /", new Frame(3, 7).toString());
+    }
+
+    @Test
+    void toStringStrike() {
+        assertEquals("X -", new Frame(10).toString());
+    }
 }

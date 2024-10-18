@@ -19,74 +19,38 @@ public class BowlingCalculator {
         }
     }
 
-    public int score() {
+    public int calculateTotalScore() {
         int score = 0;
+        for (int i = 0; i < frames.size() && i <= 9; i++) {
+            score = calculateFrameScore(i, score);
+        }
+        return score;
+    }
 
-        for (int i = 0; i < frames.size(); i++) {
-            score += frames.get(i).getFrameScore();
-            if (frames.get(i).isSpare()) {
-                score += frames.get(i + 1).getFirstRoll();
-            }
-            if (frames.get(i).isStrike()) {
-                score += frames.get(i + 1).getFrameScore();
-                if (frames.get(i + 1).isStrike()) {
-                    score += frames.get(i + 2).getFirstRoll();
-                }
+    private int calculateFrameScore(int i, int score) {
+        score += frames.get(i).getFrameScore();
+        if (frames.get(i).isSpare()) {
+            score += frames.get(i + 1).getFirstRoll();
+        }
+        if (frames.get(i).isStrike()) {
+            score += frames.get(i + 1).getFrameScore();
+
+            if (frames.get(i + 1).isStrike() && i + 2 < frames.size()) {
+                score += frames.get(i + 2).getFirstRoll();
             }
         }
         return score;
     }
+
+    public String getScorePrint() {
+        String printScore = "";
+
+        return printScore;
+    }
 }
 
 
-//    public BowlingCalculator() {
-//        // TODO: do not add preliminary frames
-//        for (int i = 0; i < 12; i++) {
-//            frames.add(new Frame());
-//        }
-//    }
-//
-//    public void roll(int pins) {
-//        var current = frames.get(currentFrame);
-//        current.addRoll(pins);
-//
-//        if (current.isStrike() && currentFrame < 9) {
-//            currentFrame++;
-//
-//        } else if (current.isComplete()) {
-//            currentFrame++;
-//        }
-//    }
-//
-//    public int score() {
-//        int totalScore = 0;
-//        for (int i = 0; i <= 9; i++) {
-//            Frame frame = frames.get(i);
-//            totalScore += frame.getScore();
-//
-//            if (frame.isStrike()) {
-//                totalScore += getStrikeBonus(i);
-//            } else if (frame.isSpare()) {
-//                totalScore += getSpareBonus(i);
-//            }
-//        }
-//        return totalScore;
-//    }
-//
-//    private int getStrikeBonus(int frameIndex) {
-//        var nextFrame = frames.get(frameIndex + 1);
-//        int bonus = nextFrame.getRoll(0) + nextFrame.getRoll(1);
-//
-//        if (nextFrame.isStrike()) {
-//            bonus += frames.get(frameIndex + 2).getRoll(0);
-//        }
-//        return bonus;
-//    }
-//
-//    private int getSpareBonus(int frameIndex) {
-//        var nextFrame = frames.get(frameIndex + 1);
-//        return nextFrame.getRoll(0);
-//    }
+
 
 
 

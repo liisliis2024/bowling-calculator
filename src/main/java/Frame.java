@@ -61,5 +61,10 @@ public class Frame {
         return Objects.hash(firstRoll, secondRoll);
     }
 
-
+    @Override
+    public String toString() {
+        if (isStrike()) return "X -";
+        if (isSpare()) return firstRoll + " /";
+        return firstRoll + " " + secondRoll;
+    }
 }
