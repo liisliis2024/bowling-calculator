@@ -32,7 +32,7 @@ public class BowlingCalculatorTest {
         assertEquals(expected, calc.frames);
     }
 
-//    todo: -1 peab tegelema
+    //    todo: -1 peab tegelema
     @Test
     public void oneRoll() {
         calc.addRoll(6);
@@ -71,6 +71,7 @@ public class BowlingCalculatorTest {
         calc.addRoll(1);
         assertEquals(26, calc.calculateTotalScore());
     }
+
     @Test
     public void strikeRollTimesTwo() {
         calc.addRoll(10);
@@ -255,6 +256,29 @@ public class BowlingCalculatorTest {
 //        viimane on -1
         assertEquals(113, calc.calculateTotalScore());
     }
+
+    @Test
+    void toStringRegular() {
+        List<Frame> frames = List.of(new Frame(3, 4), new Frame(3, 4), new Frame(3, 4), new Frame(3, 4));
+        assertEquals("| 3 4 | 3 4 | 3 4 | 3 4 |", calc.getScorePrint(frames));
+    }
+
+    @Test
+    void toStringSpare() {
+        List<Frame> frames = List.of(new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4));
+        assertEquals("| 3 4 | 3 / | 3 4 | 3 4 |", calc.getScorePrint(frames));
+    }
+
+    @Test
+    void toStringStrike() {
+        List<Frame> frames = List.of(new Frame(3, 4), new Frame(10), new Frame(3, 4), new Frame(3, 4));
+        assertEquals("| 3 4 | X - | 3 4 | 3 4 |", calc.getScorePrint(frames));
+    }
+
+
+
+
+
 }
 
 

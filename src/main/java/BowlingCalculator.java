@@ -42,13 +42,53 @@ public class BowlingCalculator {
         return score;
     }
 
-    public String getScorePrint() {
+    public String getScorePrint(List<Frame> frames) {
         String printScore = "";
 
+        for (int i = 0; i < frames.size(); i++) {
+            printScore += "| "+ frames.get(i).toString() + " " + "\n"
+                    + frames.get(i).getFrameScore();
+            if (i == frames.size() - 1) {
+                printScore += "|";
+            }
+        }
+
+// printf
+        System.out.println(printScore);
         return printScore;
     }
+
+
+
+
+
+
+//    public StringBuilder getScorePrint(List<Frame> frames) {
+//        StringBuilder printScore = new StringBuilder();
+//
+//        for (int i = 0; i < frames.size(); i++) {
+//            printScore.append("| ").append(frames.get(i).toString()).append(" ");
+//            if (i == frames.size() - 1) {
+//                printScore.append("|");
+//            }
+//        }
+//        System.out.println(printScore);
+//        return printScore;
+//    }
 }
 
+
+//StringBuilder printScore = new StringBuilder();
+//
+//for (int i = 0; i < frames.size(); i++) {
+//        // Add frame representation to the score string
+//        printScore.append("| ").append(frames.get(i).toString()).append(" ");
+//
+//// Add separator only if this is not the last frame
+//    if (i != frames.size() - 1) {
+//        printScore.append("| ");  // Add separator between frames
+//    }
+//            }
 
 
 
