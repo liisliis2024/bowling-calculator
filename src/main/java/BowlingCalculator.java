@@ -53,6 +53,7 @@ public class BowlingCalculator {
                 frameScores.append("|");
             }
         }
+//        todo: return totalScore
         return frameContents + "\n" + frameScores;
     }
 }
