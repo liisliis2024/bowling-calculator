@@ -41,75 +41,38 @@ public class BowlingCalculatorTest {
 
     @Test
     public void multipleRolls() {
-        calc.addRoll(1);
-        calc.addRoll(4);
-        calc.addRoll(3);
-        calc.addRoll(3);
+        addRolls(1, 4, 3, 3);
         assertEquals(11, calc.calculateTotalScore());
     }
 
+
     @Test
     public void spareRoll() {
-        calc.addRoll(3);
-        calc.addRoll(7);
-        calc.addRoll(1);
+        addRolls(3, 7, 1);
         assertEquals(12, calc.calculateTotalScore());
     }
 
     @Test
     public void spareRollWithTen() {
-        calc.addRoll(0);
-        calc.addRoll(10);
-        calc.addRoll(1);
+        addRolls(0, 10, 1);
         assertEquals(12, calc.calculateTotalScore());
     }
 
     @Test
     public void strikeRoll() {
-        calc.addRoll(10);
-        calc.addRoll(7);
-        calc.addRoll(1);
+        addRolls(10, 7, 1);
         assertEquals(26, calc.calculateTotalScore());
     }
 
     @Test
     public void strikeRollTimesTwo() {
-        calc.addRoll(10);
-        calc.addRoll(10);
-        calc.addRoll(1);
-        calc.addRoll(1);
+        addRolls(10, 10, 1, 1);
         assertEquals(35, calc.calculateTotalScore());
     }
 
     @Test
     public void calculateTotalScore() {
-        calc.addRoll(1);
-        calc.addRoll(1);
-
-        calc.addRoll(1);
-        calc.addRoll(1);
-
-        calc.addRoll(10);
-
-        calc.addRoll(10);
-
-        calc.addRoll(4);
-        calc.addRoll(3);
-
-        calc.addRoll(5);
-        calc.addRoll(1);
-
-        calc.addRoll(1);
-        calc.addRoll(1);
-
-        calc.addRoll(1);
-        calc.addRoll(1);
-
-        calc.addRoll(1);
-        calc.addRoll(1);
-
-        calc.addRoll(1);
-        calc.addRoll(1);
+        addRolls(1, 1, 1, 1, 10, 10, 4, 3, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1);
         assertEquals(66, calc.calculateTotalScore());
     }
 
@@ -123,137 +86,26 @@ public class BowlingCalculatorTest {
 
     @Test
     public void endWithoutBonus() {
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(10);
-
-        calc.addRoll(10);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
+        addRolls(3, 4, 3, 4, 10, 10, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4);
         assertEquals(96, calc.calculateTotalScore());
     }
 
     @Test
     public void endWithSpare() {
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(10);
-
-        calc.addRoll(10);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(7);
-
-        calc.addRoll(7);
+        addRolls(3, 4, 3, 4, 10, 10, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 7, 7);
         assertEquals(106, calc.calculateTotalScore());
+//        todo: siia toString(), addRolls siia testklassi teha
     }
 
     @Test
     public void endWithOneStrike() {
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(10);
-
-        calc.addRoll(10);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(10);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
+        addRolls(3, 4, 3, 4, 10, 10, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 10, 3, 4);
         assertEquals(106, calc.calculateTotalScore());
     }
 
     @Test
     public void endWithTwoStrikes() {
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(10);
-
-        calc.addRoll(10);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(3);
-        calc.addRoll(4);
-
-        calc.addRoll(10);
-
-        calc.addRoll(10);
-
-        calc.addRoll(4);
-//        viimane on -1
+        addRolls(3, 4, 3, 4, 10, 10, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 10, 10, 4);
         assertEquals(113, calc.calculateTotalScore());
     }
 
@@ -279,9 +131,9 @@ public class BowlingCalculatorTest {
     void toStringTotalScore() {
         List<Frame> frames = List.of(new Frame(3, 4), new Frame(3, 4), new Frame(3, 4), new Frame(3, 4));
         assertEquals("""
-            | 3 4 | 3 4 | 3 4 | 3 4 |
-            | 7 | 7 | 7 | 7 |
-            """, calc.toString(frames));
+                | 3 4 | 3 4 | 3 4 | 3 4 |
+                | 7 | 7 | 7 | 7 |
+                """, calc.toString());
 
     }
 
@@ -292,8 +144,15 @@ public class BowlingCalculatorTest {
 
     }
 
-
+    private void addRolls(int... examplePins) {
+        for (int example : examplePins) {
+            calc.addRoll(example);
+        }
+    }
 }
+
+
+
 
 
 
