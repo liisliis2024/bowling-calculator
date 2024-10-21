@@ -110,29 +110,31 @@ public class BowlingCalculatorTest {
 
     @Test
     void toStringRegularEnd() {
-        calc.frames = List.of(new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 4), new Frame(3, 4));
+        calc.frames = List.of(new Frame(3, 4), new Frame(10), new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4), new Frame(10), new Frame(3, 4), new Frame(3, 4), new Frame(3, 4));
         assertEquals("""
                 | 3 4 | X - | 3 4 | 3 / | 3 4 | 3 4 | X - | 3 4 | 3 4 | 3 4 |
                 | 7 | 24 | 31 | 44 | 51 | 58 | 75 | 82 | 89 | 96 |""", calc.toString());
 
     }
 
-//    todo: bonus rounds
+//    todo: bonus rounds: lõpuskoor ja kuvamine
     @Test
     void toStringSpareEnd() {
-        calc.frames = List.of(new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 4), new Frame(3, 7), new Frame(4));
+        calc.frames = List.of(new Frame(3, 4), new Frame(10), new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4), new Frame(10), new Frame(3, 4), new Frame(3, 4), new Frame(3, 7), new Frame(4));
+//        107 tuleb loppu
         assertEquals("""
-                | 3 4 | X - | 3 4 | 3 / | 3 4 | 3 4 | X - | 3 4 | 3 4 | 3 / | 4 |
+                | 3 4 | X - | 3 4 | 3 / | 3 4 | 3 4 | X - | 3 4 | 3 4 | 3 / 4 |
                 | 7 | 24 | 31 | 44 | 51 | 58 | 75 | 82 | 89 | 103 |""", calc.toString());
 
     }
 
     @Test
     void toStringStrikeEnd() {
-        calc.frames = List.of(new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 4), new Frame(3, 4));
+        calc.frames = List.of(new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 4), new Frame(10), new Frame(3, 4));
+//        113 tuleb loppu
         assertEquals("""
-                | 3 4 | X - | 3 4 | 3 / | 3 4 | 3 4 | X - | 3 4 | 3 4 | X - | 3 4 |
-                | 7 | 24 | 31 | 44 | 51 | 58 | 75 | 82 | 89 | 96 |""", calc.toString());
+                | 3 4 | X - | 3 4 | 3 / | 3 4 | 3 4 | X - | 3 4 | 3 4 | X 3 4 |
+                | 7 | 24 | 31 | 44 | 51 | 58 | 75 | 82 | 89 | 106 |""", calc.toString());
 
     }
 

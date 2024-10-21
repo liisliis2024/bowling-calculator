@@ -43,6 +43,7 @@ public class Frame {
 
     public int getFrameScore() {
         if (secondRoll == -1) {
+            this.secondRoll = 0;
             return firstRoll;
         }
         return firstRoll + secondRoll;

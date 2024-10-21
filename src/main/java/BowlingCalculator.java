@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BowlingCalculator {
+    public static final int LAST_FRAME = 9;
     List<Frame> frames = new ArrayList<>();
 
     public void addRoll(int pins) {
@@ -18,7 +19,7 @@ public class BowlingCalculator {
 
     public int calculateTotalScore() {
         int score = 0;
-        for (int i = 0; i < frames.size() && i <= 9; i++) {
+        for (int i = 0; i < frames.size() && i <= LAST_FRAME; i++) {
             score = calculateFrameScore(i, score);
         }
         return score;
@@ -26,17 +27,22 @@ public class BowlingCalculator {
 
     private int calculateFrameScore(int i, int score) {
         var frame = frames.get(i);
-        score += frame.getFrameScore();
-        if (frame.isSpare()) {
-            score += frames.get(i + 1).getFirstRoll();
-        }
-        if (frame.isStrike()) {
-            score += frames.get(i + 1).getFrameScore();
-            if (frames.get(i + 1).isStrike() && i + 2 < frames.size()) {
-                score += frames.get(i + 2).getFirstRoll();
+        if (i <= LAST_FRAME) {
+
+            score += frame.getFrameScore();
+
+            if (frame.isSpare()) {
+                score += frames.get(i + 1).getFirstRoll();
+            }
+            if (frame.isStrike()) {
+                score += frames.get(i + 1).getFrameScore();
+                if (frames.get(i + 1).isStrike() && i + 2 < frames.size()) {
+                    score += frames.get(i + 2).getFirstRoll();
+                }
             }
         }
         return score;
+
     }
 
     public String toString() {
@@ -48,12 +54,12 @@ public class BowlingCalculator {
             frameScore = calculateFrameScore(i, frameScore);
             frameContents.append("| ").append(frames.get(i).toString()).append(" ");
             frameScores.append("| ").append(frameScore).append(" ");
-            if (i == frames.size()-1) {
+            if (i == frames.size() - 1) {
                 frameContents.append("|");
                 frameScores.append("|");
             }
         }
-//        todo: return totalScore
+//        todo: return totalScore Total score:
         return frameContents + "\n" + frameScores;
     }
 }
