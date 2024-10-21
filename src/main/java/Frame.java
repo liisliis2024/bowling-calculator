@@ -62,7 +62,6 @@ public class Frame {
         return Objects.hash(firstRoll, secondRoll);
     }
 
-    //
     @Override
     public String toString() {
         if (isStrike()) return "X -";
@@ -70,8 +69,6 @@ public class Frame {
         return firstRoll + " " + secondRoll;
 
     }
-    //            Strike: ei prindi - (toString Frame klassis), prindiks juurde i+1 mõlemad numbrid või i+2 firstRoll
-//                Spare: i+1 esimene number (NB! teist numbrit ei tohi printida)
 
     public String toStringEnd(int i) {
         if (isStrike()) return "X";

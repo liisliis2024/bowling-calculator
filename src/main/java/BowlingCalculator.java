@@ -42,7 +42,6 @@ public class BowlingCalculator {
             }
         }
         return score;
-
     }
 
     public String toString() {
@@ -57,12 +56,7 @@ public class BowlingCalculator {
                 frameScores.append("| ").append(frameScore).append(" ");
             } else {
                 if (i == LAST_FRAME) frameContents.append("| ");
-//            Strike: ei prindi - (toString Frame klassis), prindiks juurde i+1 mõlemad numbrid või i+2 firstRoll
-//                Spare: i+1 esimene number (NB! teist numbrit ei tohi printida)
                 frameContents.append(frames.get(i).toStringEnd(i)).append(" ");
-//                frameScores.append("| ").append(frameScore).append(" ");
-
-
             }
             if (i == frames.size() - 1) {
                 frameContents.append("|");
@@ -70,7 +64,6 @@ public class BowlingCalculator {
             }
         }
         frameScores.append(" ").append(frameScore).append(" |");
-//        todo: return totalScore Total score:
         return frameContents + "\n" + frameScores;
     }
 }

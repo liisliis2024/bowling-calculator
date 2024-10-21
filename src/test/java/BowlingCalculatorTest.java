@@ -117,7 +117,6 @@ public class BowlingCalculatorTest {
 
     }
 
-//    todo: bonus rounds: lõpuskoor ja kuvamine
     @Test
     void toStringSpareEnd() {
         calc.frames = List.of(new Frame(3, 4), new Frame(10), new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4), new Frame(10), new Frame(3, 4), new Frame(3, 4), new Frame(3, 7), new Frame(4));
@@ -138,8 +137,7 @@ public class BowlingCalculatorTest {
 
     @Test
     void toStringDoubleStrikeEnd() {
-        calc.frames = List.of(new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 4), new Frame(10),  new Frame(10), new Frame(3));
-//        lopu summa vale, peab arvutama
+        calc.frames = List.of(new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 7), new Frame(3, 4), new Frame(3, 4), new Frame(10, 0), new Frame(3, 4), new Frame(3, 4), new Frame(10), new Frame(10), new Frame(3));
         assertEquals("""
                 | 3 4 | X - | 3 4 | 3 / | 3 4 | 3 4 | X - | 3 4 | 3 4 | X X 3 |
                 | 7 | 24 | 31 | 44 | 51 | 58 | 75 | 82 | 89 | 112 |""", calc.toString());
